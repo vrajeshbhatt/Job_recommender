@@ -1,0 +1,10 @@
+Problem – description, paragraph
+Solution -  extract skills from it,
+Make a dataset for the job titles and their related skills
+How we can extract skills from the description
+Noun phrase extraction
+Removing punctuation and stopwords (a,an, the, I, in,etc.)
+Making csv file
+Manually writing skill/ no skill word – 9243
+Reason, why manually,
+Usecases of this model
