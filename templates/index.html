@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Job Prediction</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/typicons/2.0.9/typicons.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css'>
+<link rel= "stylesheet" type= "text/css" href = "{{ url_for('static', filename = 'css/style.css') }}">
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+<style>
+  .upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.btn {
+  border: 2px solid gray;
+  color: gray;
+  background-color: white;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+</style>
+</head>
+
+<!-- partial:index.partial.html -->
+<body id="particles-js"></body>
+<div class="animated bounceInDown">
+ <div class="container">
+    <span class="error animated tada" id="msg"></span>
+
+      <form name="form1" class="box" method = "POST" enctype = "multipart/form-data" action="/upload_file">
+        <h4>Job<span> Recommender</span></h4>
+        <h5>Upload your resume to start</h5>
+
+        <input type="text" placeholder='Enter your desired Location' style="position: center;">
+        <!-- <div class="upload-btn-wrapper"> -->
+          
+          <input type="file" name="file"/>
+          <h5>{{name}}</h5>
+          <button name ='form1' type="submit" class="btn1" style="font-weight: 400; ">Upload Your Resume</button>
+        <!-- </div> -->
+      </div>
+      </form>
+
+      <i id="eye"></i>
+      <form name="form2" class="box" method = "POST" enctype = "multipart/form-data" action="/predict">
+
+        <input type="submit" value="Predict" class="btn1">
+      </form>
+        <!-- <a href="#" class="dnthave">Don’t have an account? Sign up</a> -->
+  </div> 
+  
+  <div class="box1">
+    <span class="container1" id="msg">
+      <h4>Logs<span> Display </span></h4>
+
+      {% for success in logs %}
+      <h5 style="color: #dfdeee; font-weight: lighter; font-size: 12px; ">{{success}}</h5>
+      {% endfor %}
+    </span>
+  </div> 
+
+  <div class="box_title">
+    <span class="container2" id="msg">
+      <h5 style=" font-weight: lighter; font-size: 20px; margin: 10px auto; ">Your best suitable title</span></h4>
+      <h4 style="color: #ffffff; font-weight: lighter; font-size: 20px; margin: 5px auto;">{{title}}</h4>
+    </span>
+  </div> 
+
+</div>
+<!-- partial -->
+<script type = "text/javascript" 
+         src = "{{ url_for('static', filename = 'script.js') }}" ></script>
+
+         <script src="https://code.jquery.com/jquery-3.5.1.js"
+         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+         crossorigin="anonymous"></script>
+
+
+
+</html>
